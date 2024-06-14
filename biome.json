@@ -22,7 +22,8 @@
     "formatter": {
       "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
-      "trailingComma": "all",
+      "trailingCommas": "all",
+      "enabled": true,
       "semicolons": "asNeeded",
       "arrowParentheses": "always",
       "bracketSpacing": true,
