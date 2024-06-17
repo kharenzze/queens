@@ -24,7 +24,7 @@ export class RandomEngine {
     return Math.floor(this.rng() * (max - min + 1)) + min
   }
 
-  shuffle(array: any[]) {
+  shuffle<T>(array: T[]): void {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(this.rng() * (i + 1))
       const temp = array[i]
