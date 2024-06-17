@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import { Queens } from './src/Queens.ts'
+import { Queens } from './src/Queens'
 
-const q = new Queens({ dim: 8 })
+const q = new Queens({ dim: 8, })
 
-// in nuxt, run this in client-only code
-
-if (process.client) {
-  console.log(q.board)
-}
 </script>
 
 <template>
