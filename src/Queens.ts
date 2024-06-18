@@ -84,6 +84,7 @@ export class Queens {
     for (let i = 0; i < d; i++) {
       const j = result[i]
       board[i][j].isQueen = true
+      board[i][j].qid = i
     }
 
     return board
