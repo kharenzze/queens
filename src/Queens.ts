@@ -1,9 +1,10 @@
 import { Point } from './Point'
 import { RandomEngine } from './random'
 
-interface Cell {
+export interface Cell {
   isQueen: boolean
   qid: number
+  status: CellState
 }
 
 type Board = Cell[][]
@@ -16,6 +17,7 @@ interface Config {
 const getDefaultCell = (): Cell => ({
   isQueen: false,
   qid: -1,
+  status: CellState.UNKNOWN,
 })
 
 const inRange = (min: number, max: number) => (n: number) => min <= n && n <= max
@@ -24,6 +26,12 @@ const takeRandom =
   (rnd: RandomEngine) =>
   <T>(array: T[]) =>
     take(array, rnd.getRandomInt(array.length - 1))
+
+export enum CellState {
+  UNKNOWN = -1,
+  FREE = 0,
+  QUEEN = 1,
+}
 
 export class Queens {
   board: Board
