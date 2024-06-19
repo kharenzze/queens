@@ -20,7 +20,13 @@ export class RandomEngine {
     return this.rng()
   }
 
-  getRandomInt(min: number, max: number) {
+  getRandomInt(min: number, max?: number) {
+    if (max === undefined) {
+      // biome-ignore lint/style/noParameterAssign: Simply handling optional parameters
+      max = min
+      // biome-ignore lint/style/noParameterAssign: Simply handling optional parameters
+      min = 0
+    }
     return Math.floor(this.rng() * (max - min + 1)) + min
   }
 
