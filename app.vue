@@ -2,7 +2,9 @@
 import { Queens, CellState, type Cell } from './src/Queens'
 import { Colors } from './src/colors'
 
-const q = new Queens({ dim: 8, })
+const DIM = 8
+
+const q = new Queens({ dim: DIM, })
 const board = reactive(q.board)
 
 const CellToTextMapping: Record<CellState, string> = {
@@ -23,6 +25,14 @@ const onClick = (cell: Cell) => {
   cell.status = getNextState(cell.status)
 }
 
+const success = computed(() => {
+  return board.every((row) => row.every((cell) => (cell.isQueen && cell.status === CellState.QUEEN) || (!cell.isQueen && cell.status !== CellState.QUEEN)))
+})
+
+const text = computed(() => success.value ? 'Success!' : '')
+
+
+
 </script>
 
 <template>
@@ -33,6 +43,7 @@ const onClick = (cell: Cell) => {
         {{ CellToTextMapping[cell.status] }}
       </div>
     </div>
+    <h2>{{ text }}</h2>
   </div>
 </template>
 
